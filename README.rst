@@ -1,20 +1,13 @@
-Writing a Simple DSL in Python
+DSL for UI bug generate
 ==============================
+此项目定义了一种dsl语法，可以规定任意类型的UI bug且进行对应的生成，主要数据集基于Rico
 
-This is the source code for a tutorial I wrote for Dan Bader's blog:
-`Writing a Domain Specific Language (DSL) in Python <https://dbader.org/blog/writing-a-dsl-with-python>`_.
-
-Dan's spent a lot of time putting together a ton of very high-quality resources on his
-site `dbader.org <https://dbader.org/>`_ and
-YouTube channel `Python Training by Dan Bader <https://www.youtube.com/channel/UCI0vQvr9aFn27yR6Ej6n5UA>`_.
-If you're interested in improving your Python skills, check it out.
-
-Requirements
-------------
-
-- `Python <https://www.python.org/>`_ 2 or 3.
-
-License
--------
-
-The MIT License. See `LICENSE <https://github.com/natej/dsl/blob/master/LICENSE>`_.
+Archive文件夹为Rico数据集
+文件结构为
+D:.
+├─rico_dataset_v0.1_semantic_annotations
+│  └─semantic_annotations
+└─unique_uis
+    └─combined
+main.py可以解析每一条bug.dsl中的规则且生成对应的缺陷数据
+TODO标志了待完成内容
