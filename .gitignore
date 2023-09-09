@@ -19,3 +19,5 @@ distribute-*.tar.gz
 env*/
 .tox/
 venv/
+.vscode/*
+__pycache__/*

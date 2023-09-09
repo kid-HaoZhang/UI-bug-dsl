@@ -1,0 +1,25 @@
+{
+    "info": info,
+    "licenses": [license],
+    "images": [image],
+    "annotations": [
+        {
+            "id": 3,    
+            "image_id": 3,
+            "category_id": 2, # 对应text overlap
+            "segmentation": ,
+            "area": float,
+            "bbox": [x,y,width,height],
+            "iscrowd": 0 or 1,
+        },
+        {
+            "id": 4,    
+            "image_id": 4,
+            "category_id": 2, # 对应text overlap
+            "segmentation": ,
+            "area": float,
+            "bbox": [x,y,width,height],
+            "iscrowd": 0 or 1,
+        }
+    ],
+}
