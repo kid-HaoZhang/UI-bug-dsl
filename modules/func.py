@@ -1,5 +1,5 @@
 from strenum import StrEnum
-from .bound import find_icon
+from .cv_helper import find_icon
 
 import numpy as np
 import cv2

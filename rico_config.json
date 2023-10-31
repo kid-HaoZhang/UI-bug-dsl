@@ -1,0 +1,7 @@
+{
+    "dataset_style": "rico",
+    "gennum": 10,
+    "UI_dir": "D:\\HongMeng\\archive\\unique_uis\\combined",
+    "annotation_dir":"D:\\HongMeng\\archive\\rico_dataset_v0.1_semantic_annotations\\semantic_annotations",
+    "output_dir": "D:\\HongMeng\\dsl\\vins_bug"
+}

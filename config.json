@@ -1,0 +1,9 @@
+{
+    "dataset_style": "coco",
+    "gennum": 10,
+    "UI_dir": "D:\\HongMeng\\GLIP\\DATASET\\vins_coco\\train\\images",
+    "annotation_dir":"D:\\HongMeng\\GLIP\\DATASET\\vins_coco\\train\\annotations",
+    "annotation_file": "D:\\HongMeng\\GLIP\\DATASET\\vins_coco\\train\\annotations\\train.json",
+    "output_dir": "D:\\HongMeng\\dsl\\vins_bug",
+    "output_json": "D:\\HongMeng\\dsl\\vins_bug\\annotaions.json"
+}
