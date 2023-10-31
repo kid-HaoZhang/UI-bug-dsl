@@ -95,8 +95,23 @@ def gen_bug_UI_bounds(bug_rule: rule, img: cv2.Mat, bounds: [[]]):
         bound = bounds[idx]
         x1, y1, x2, y2 = bound[0], bound[1], bound[2], bound[3]
         widget_img = remove_background(img[y1:y2, x1:x2]) # 认为已经是精确bound, 且去除掉背景
-        for 
-        
+        for tran in bug_rule.trans:
+            widget_new_pos = new_pos(new_pos_str(bound, tran.position))
+            widget_new_pos = [max(0, widget_new_pos[0]), max(0, widget_new_pos[1]), 
+                            min(widget_new_pos[2], width), min(widget_new_pos[3], height)]
+            new_widget_width, new_widget_height = widget_new_pos[2] - widget_new_pos[0], widget_new_pos[3] - widget_new_pos[1]
+            
+            if tran.copy:
+                img[widget_new_pos[1]:widget_new_pos[3], widget_new_pos[0]:widget_new_pos[2]] = widget_img[:new_widget_height, :new_widget_width]
+            else:
+                img[widget_new_pos[1]:widget_new_pos[3], widget_new_pos[0]:widget_new_pos[2]] = background
+            
+            new_widget = widget_img.copy()
+            if tran.func is not None:
+                new_widget = eval(tran.func)(new_widget, background)
+            overlap()
+            img[widget_new_pos[1]:widget_new_pos[3], widget_new_pos[0]:widget_new_pos[2]] = new_widget[:new_widget_height, :new_widget_width]
+
 
 def gen_bug_one_UI(bug_rule: rule, UI_path, annotation_file):
     if not exist_type(annotation_file, bug_rule.widget_type): # 不存在要处理的type

@@ -68,19 +68,7 @@ def overlay(img1, img2, x_bias, y_bias):
     return img1
 
 if __name__ == '__main__':
-    # img = cv2.imread('D:\HongMeng\dsl\\tmp\\3.png', cv2.IMREAD_UNCHANGED)
-    # hei, wid, _ = img.shape
-    # # print(wid, hei)
-    # widget_img = remove_bg(img)
-    # # print(widget_img)
-    # # mask = np.where((widget_img [:,:,0] == 0) & (widget_img [:,:,1] == 0) & (widget_img [:,:,2] == 0), 0, 255).astype(widget_img.dtype)
-    # overlayd = img.copy()
-    # # tran = cv2.bitwise_and(widget_img, widget_img, mask=mask)
-    # # print(tran.shape)
-    # overlayd = overlay(overlayd, widget_img[0:hei-20, 0:wid-20], 20, 20)
-    # # overlay[20:hei, 20:wid] = tran[0:hei-20, 0:wid-20]
-    # show_img(overlayd)
-    input_path = 'D:\HongMeng\dsl\\tmp\\4.png'
+    input_path = "D:\\UI-bug-dsl\\tmp\\6.png"
     output_path = 'output.png'
 
     input = cv2.imread(input_path)
@@ -88,15 +76,7 @@ if __name__ == '__main__':
     print(input.shape)
     output = remove(input)
     output = remove(output)
-    output = remove(output)
-    # 创建一个空白的掩码，用于存放output的透明度
-    # mask = np.zeros((h, w), dtype=np.uint8)
-    # mask[40:h, 40:w] = output[0:h-40, 0:w-40, 3]
-    # mask = mask.astype(bool)
-    # print(mask.shape)
-    # print(output.shape)
-    # # 将output的前三个通道（颜色）赋值给input的对应位置，且只覆盖非透明的部分
-    # input[40:h, 40:w][mask[0:h-40, 0:w-40]] = output[0:h-40, 0:w-40][mask[0:h-40, 0:w-40], :3]
+    
     o = overlay(input, output[0:h-20, 0:w-20], 20, 20)
     cv2.imwrite(output_path, o)
     
