@@ -7,6 +7,7 @@ from rule import *
 from gen_bug import gen_bug
 from config import Config
 from cocoHelper import cocoHelper
+from result import Result
 
 dsl_path = 'bug.dsl'
 
@@ -18,12 +19,22 @@ def gen_rules():
             if not line or line[0] == '#':
                 continue
             bug_name, line = line.split(':') # bug_name, rule
-            w_type, line = line.split(' ') # widget_name, rule|...
-            w_type = w_type[0].capitalize() + w_type[1:]
-            if w_type not in widget_types:
-                print('not exist widget_type:', line)
+            idx = line.index(' ')
+            w_type = line[:idx]
+            line = line[idx + 1:] # widget_name, keep/background rule|...
+            idx = line.index(' ')
+            keep = line[:idx] == 'keep'
+            line = line[idx + 1:]
+
+            w_type = w_type.capitalize()
+            e = False
+            for w in widget_types:
+                if w_type == w.capitalize():
+                    e = True
+                    break
+            if not e:
                 continue
-            Rule = rule(bug_name, w_type)
+            Rule = rule(bug_name, w_type, keep)
 
             trans = line.split('|')
             for r in trans:
@@ -31,9 +42,9 @@ def gen_rules():
                 parts = r.split(' ')
                 if len(parts) < 3:
                     print('rule wrong format:', line)
-                tran.position = parts[0]
-                tran.copy = parts[1] == "keep"
-                tran.func = parts[2]
+                tran.focus = parts[0] == 'focus'
+                tran.func = parts[1]
+                tran.position = parts[2]
                 Rule.add_trans(tran)
             Rules.append(Rule)
     return Rules
@@ -41,5 +52,9 @@ def gen_rules():
 def main():
     Config.parse_config()
     cocoHelper.init()
+    Result.init()
     for rule in gen_rules():
         gen_bug(rule)
+
+if __name__ == "__main__":
+    main()

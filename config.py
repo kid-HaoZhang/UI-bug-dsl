@@ -1,5 +1,11 @@
 import json
 import os
+import shutil
+
+def new_dir(dir):
+    if os.path.exists(dir):
+        shutil.rmtree(dir)    
+    os.mkdir(dir)
 
 class Config():
     gennum = 10
@@ -9,17 +15,24 @@ class Config():
     proj_dir = ""
     result_dir = ""
     result_UI_dir = ""
+    result_json = ""
     dataset_style = ""
-    output_json = ""
-
-    def parse_config(self):
-        configs = json.loads(open('config.josn', 'r').read())
-        self.gennum = configs["gennum"]
-        self.UI_dir = configs["UI_dir"]
-        self.annotation_dir = configs["annotation_dir"]
-        self.annotation_file = configs["annotation_file"]
-        self.proj_dir = os.path.abspath('.')
-        self.result_dir = os.path.join(self.proj_dir, 'result')
-        self.result_UI_dir = os.path.join(self.result_dir, "bugUI")
-        self.dataset_style = configs['dataset_style']
-        self.output_json = configs['output_json']
+    version_name = "ori"
+    @staticmethod
+    def parse_config():
+        Config.proj_dir = os.path.abspath('.')
+        configs = json.loads(open(os.path.join(Config.proj_dir, 'config.json'), 'r').read())
+        Config.gennum = configs["gennum"]
+        Config.UI_dir = configs["UI_dir"]
+        Config.annotation_dir = configs["annotation_dir"]
+        Config.annotation_file = configs["annotation_file"]
+        Config.result_dir = os.path.join(Config.proj_dir, 'result')
+        new_dir(Config.result_dir)
+        Config.result_UI_dir = os.path.join(Config.result_dir, "bugUI")
+        new_dir(Config.result_UI_dir)
+        Config.result_json = os.path.join(Config.result_dir, 'annotations.json')
+        Config.dataset_style = configs['dataset_style']
+        Config.version_name = configs['version_name']
+        
+if __name__ == "__main__":
+    Config.parse_config()

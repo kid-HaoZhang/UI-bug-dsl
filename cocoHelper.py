@@ -9,14 +9,14 @@ class cocoHelper():
     cat_dict: dict
     img_ids: list[int]
     img_dict: dict
-
-    def init(self):
+    @staticmethod
+    def init():
         if Config.dataset_style != "coco":
             return
         coco = COCO(annotation_file=Config.annotation_file)
-        self.anno_ids = coco.getAnnIds()
-        self.anno_dict = {anno['id']:anno for anno in coco.loadAnns(self.anno_ids)}
-        self.cat_ids = coco.getCatIds()
-        self.cat_dict = {cat['id']:cat for cat in coco.loadCats(self.cat_ids)}
-        self.img_ids = coco.getImgIds()
-        self.img_dict = {img['id']:img for img in coco.loadImgs(self.img_ids)}
+        cocoHelper.anno_ids = coco.getAnnIds()
+        cocoHelper.anno_dict = {anno['id']:anno for anno in coco.loadAnns(cocoHelper.anno_ids)}
+        cocoHelper.cat_ids = coco.getCatIds()
+        cocoHelper.cat_dict = {cat['id']:cat for cat in coco.loadCats(cocoHelper.cat_ids)}
+        cocoHelper.img_ids = coco.getImgIds()
+        cocoHelper.img_dict = {img['id']:img for img in coco.loadImgs(cocoHelper.img_ids)}

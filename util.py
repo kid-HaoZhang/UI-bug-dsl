@@ -5,8 +5,8 @@ import numpy as np
 def select_random_numbers(n):
     numbers = list(range(0, n))
     selected_numbers = []
-    for i in range(0, len(numbers), 5):
-        selected_numbers.append(random.choice(numbers[i:i+5]))
+    for i in range(0, len(numbers), 4):
+        selected_numbers.append(random.choice(numbers[i:i+4]))
     return selected_numbers
 
 
@@ -28,10 +28,11 @@ def remove_background(image_path):
     return foreground
 
 if __name__ == "__main__":
-    print(select_random_numbers(6))
+    # print(select_random_numbers(6))
     # 示例用法
-    image_path = 'D:\HongMeng\dsl\\tmp\\2.png'
-    foreground_image = remove_background(image_path)
-    cv2.imshow('Foreground Image', foreground_image)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+    # image_path = 'D:\HongMeng\dsl\\tmp\\4.png'
+    # foreground_image = remove_background(image_path)
+    # cv2.imshow('Foreground Image', foreground_image)
+    # cv2.waitKey(0)
+    # cv2.destroyAllWindows()
+    print(select_random_numbers(5))
