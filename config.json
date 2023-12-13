@@ -1,10 +1,8 @@
 {
     "dataset_style": "coco",
-    "gennum": 481,
+    "gennum": 300,
     "UI_dir": "D:\\HongMeng\\GLIP\\DATASET\\vins_coco\\val\\images",
     "annotation_dir":"D:\\HongMeng\\GLIP\\DATASET\\vins_coco\\val\\annotations",
     "annotation_file": "D:\\HongMeng\\GLIP\\DATASET\\vins_coco\\val\\annotations\\val.json",
-    "output_dir": "D:\\HongMeng\\dsl\\vins_bug",
-    "output_json": "D:\\HongMeng\\dsl\\vins_bug\\annotaions.json",
     "version_name": ""
 }

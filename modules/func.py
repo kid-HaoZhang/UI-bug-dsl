@@ -141,6 +141,12 @@ def occlusion(img: cv2.Mat, background) ->cv2.Mat:
     img[int(r*h):,:] = background
     return img
 
+def imageloaderror(img: cv2.Mat, background) -> cv2.Mat:
+    h, w = img.shape[:2]
+    errorimg = cv2.imread('D:\HongMeng\dsl\Assets\\3.png')
+    errorimg = cv2.resize(errorimg, (w, h) )
+    return errorimg
+
 # if __name__ == "__main__":
     # img = cv2.imread('2.jpg')
     # color = img[800, 400]

@@ -14,7 +14,7 @@ class Result:
     @staticmethod
     def init():
         if os.path.exists(Config.result_json):
-            Result.coco = json.load(Config.result_json)
+            Result.coco = json.load(open(Config.result_json, 'r'))
             Result.categories = Result.coco['categories']
             Result.annotations = Result.coco['annotations']
             Result.images = Result.coco['images']
@@ -35,7 +35,7 @@ class Result:
     def add_cat(name: str):
         if name in Result.catdict.keys():
             return
-        cat = {'id': len(Result.catdict.keys()), 'name': name, 'supercategory': 'app'}
+        cat = {'id': len(Result.catdict.keys()) + 1, 'name': name, 'supercategory': 'GUI bug'}
         Result.categories.append(cat)
         Result.catdict[name] = cat
     @staticmethod
