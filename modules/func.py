@@ -147,6 +147,22 @@ def imageloaderror(img: cv2.Mat, background) -> cv2.Mat:
     errorimg = cv2.resize(errorimg, (w, h) )
     return errorimg
 
+def highSaturation(img: cv2.Mat, background) -> cv2.Mat:
+    # 将图像从BGR颜色空间转换为HSV颜色空间
+    hsv_image = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+
+    # 增加饱和度
+    s = hsv_image[:, :, 1]
+    s = np.clip(s * 4, 0, 255)
+    hsv_image[..., 1] = s
+
+    # 将图像从HSV颜色空间转换回BGR颜色空间
+    result = cv2.cvtColor(hsv_image, cv2.COLOR_HSV2BGR)
+    return result
+
+def lowContrast(img: cv2.Mat, background) -> cv2.Mat:
+    return img // 4
+
 # if __name__ == "__main__":
     # img = cv2.imread('2.jpg')
     # color = img[800, 400]

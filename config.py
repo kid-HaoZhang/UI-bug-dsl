@@ -27,9 +27,9 @@ class Config():
         Config.annotation_dir = configs["annotation_dir"]
         Config.annotation_file = configs["annotation_file"]
         Config.result_dir = os.path.join(Config.proj_dir, 'result')
-        # new_dir(Config.result_dir)
+        new_dir(Config.result_dir)
         Config.result_UI_dir = os.path.join(Config.result_dir, "bugUI")
-        # new_dir(Config.result_UI_dir)
+        new_dir(Config.result_UI_dir)
         Config.result_json = os.path.join(Config.result_dir, 'annotations.json')
         Config.dataset_style = configs['dataset_style']
         Config.version_name = configs['version_name']

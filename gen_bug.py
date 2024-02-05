@@ -93,7 +93,7 @@ def gen_bug_coco(bug_rule: rule):
     Result.coco2file()
         
 def expand_widget(bounds: [], width, height):
-    re = bounds
+    re = bounds.copy()
     re[0] = int(0 if re[0] - 10 < 0 else re[0] - 10)
     re[1] = int(0 if re[1] - 10 < 0 else re[1] - 10)
     re[2] = int(re[2] + 10 if re[2] + 10 < width else width)
